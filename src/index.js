@@ -4,9 +4,9 @@ const tc = require('@actions/tool-cache');
 
 const getPlatform = () => {
   switch (os.platform()) {
-    case 'linux': return 'Linux';
-    case 'darwin': return 'Darwin';
-    case 'win32': return 'Windows';
+    case 'linux': return 'linux';
+    case 'darwin': return 'darwin';
+    case 'win32': return 'windows';
     default:
       core.setFailed('Unsupported Platform');
       return process.exit();
