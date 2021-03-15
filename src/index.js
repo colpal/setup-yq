@@ -1,6 +1,8 @@
 const os = require('os');
+const path = require('path');
 const core = require('@actions/core');
 const tc = require('@actions/tool-cache');
+const io = require('@actions/io');
 
 const getPlatform = () => {
   switch (os.platform()) {
@@ -61,7 +63,12 @@ const cache = (fn) => async (version) => {
 const getTool = cache(async (version) => {
   const url = getURL(version);
   const archive = await tc.downloadTool(url);
-  return extract(archive);
+  const folder = await extract(archive);
+  await io.mv(
+    path.resolve(folder, `yq_${getPlatform()}_${getArchitecture()}`),
+    path.resolve(folder, 'yq'),
+  );
+  return folder;
 });
 
 (async () => {
