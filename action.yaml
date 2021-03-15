@@ -1,0 +1,10 @@
+---
+name: Setup yq
+description: Initialize the yq binary within your GitHub Actions runner
+inputs:
+  yq-version:
+    description: Version of yq binary to install
+    required: true
+runs:
+  using: node12
+  main: dist/main.js
