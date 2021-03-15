@@ -15,7 +15,7 @@ const getPlatform = () => {
 
 const getArchitecture = () => {
   switch (os.arch()) {
-    case 'x64': return 'x86_64';
+    case 'x64': return 'amd64';
     default:
       core.setFailed('Unsupported Architecture');
       return process.exit();
