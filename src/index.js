@@ -36,6 +36,18 @@ const getArchiveExtension = () => {
   }
 };
 
+const getExecutableExtension = () => {
+  switch (os.platform()) {
+    case 'win32': return '.exe';
+    case 'linux':
+    case 'darwin':
+      return '';
+    default:
+      core.setFailed('Unsupported Platform');
+      return process.exit();
+  }
+};
+
 const getURL = (version) => {
   const platform = getPlatform();
   const arch = getArchitecture();
@@ -65,7 +77,7 @@ const getTool = cache(async (version) => {
   const archive = await tc.downloadTool(url);
   const folder = await extract(archive);
   await io.mv(
-    path.resolve(folder, `yq_${getPlatform()}_${getArchitecture()}`),
+    path.resolve(folder, `yq_${getPlatform()}_${getArchitecture()}${getExecutableExtension()}`),
     path.resolve(folder, 'yq'),
   );
   return folder;
