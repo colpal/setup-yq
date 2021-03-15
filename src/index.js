@@ -38,7 +38,7 @@ const getURL = (version) => {
   const platform = getPlatform();
   const arch = getArchitecture();
   const extension = getArchiveExtension();
-  return `https://github.com/mikefarah/yq/releases/download/v${version}/yq_${platform}_${arch}.${extension}`
+  return `https://github.com/mikefarah/yq/releases/download/v${version}/yq_${platform}_${arch}.${extension}`;
 };
 
 const extract = (archive) => {
