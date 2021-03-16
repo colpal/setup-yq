@@ -58,6 +58,8 @@ const getExecutableExtension = () => {
   }
 };
 
+const getVersionPrefix = (version) => (isLegacyRelease(version) ? '' : 'v');
+
 const getURL = (version) => {
   const platform = getPlatform();
   const arch = getArchitecture();
