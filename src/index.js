@@ -82,21 +82,16 @@ const extract = (archive) => {
 const cache = (fn) => async (version) => {
   const cached = tc.find('yq', version);
   if (cached !== '') return cached;
-  const folder = await fn(version);
-  return tc.cacheDir(folder, 'yq', version);
+  const executable = await fn(version);
+  return tc.cacheFile(executable, `yq${getExecutableExtension()}`, 'yq', version);
 };
 
 const getTool = cache(async (version) => {
   const url = getURL(version);
-  const archive = await tc.downloadTool(url);
-  core.debug(fs.readdirSync(archive));
-  const folder = await extract(archive);
-  core.debug(fs.readdirSync(folder));
-  await io.mv(
-    path.resolve(folder, `yq_${getPlatform()}_${getArchitecture()}${getExecutableExtension()}`),
-    path.resolve(folder, 'yq'),
-  );
-  return folder;
+  const download = await tc.downloadTool(url);
+  if (!hasArchive(version)) return download;
+  const folder = await extract(download);
+  return path.resolve(folder, `yq_${getPlatform()}_${getArchitecture()}${getExecutableExtension()}`);
 });
 
 (async () => {
