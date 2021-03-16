@@ -84,7 +84,7 @@ const cache = (fn) => async (version) => {
   if (cached !== '') return cached;
   const executable = await fn(version);
   core.debug(await fs.lstat(executable));
-  const [mode] = await fs.lstat(executable);
+  const { mode } = await fs.lstat(executable);
   const newMode = mode | 0o111; // eslint-disable-line no-bitwise
   await fs.chmod(executable, newMode);
   core.debug(await fs.lstat(executable));
