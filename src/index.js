@@ -1,6 +1,6 @@
 const os = require('os');
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs').promises;
 const core = require('@actions/core');
 const tc = require('@actions/tool-cache');
 const io = require('@actions/io');
@@ -83,7 +83,9 @@ const cache = (fn) => async (version) => {
   const cached = tc.find('yq', version);
   if (cached !== '') return cached;
   const executable = await fn(version);
-  core.debug(executable);
+  const mode = await fs.lstat(executable).mode;
+  const newMode = mode | 0o111; // eslint-disable-line no-bitwise
+  await fs.chmod(executable, newMode);
   return tc.cacheFile(executable, `yq${getExecutableExtension()}`, 'yq', version);
 };
 
