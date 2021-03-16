@@ -83,6 +83,7 @@ const cache = (fn) => async (version) => {
   const cached = tc.find('yq', version);
   if (cached !== '') return cached;
   const executable = await fn(version);
+  core.debug(executable);
   return tc.cacheFile(executable, `yq${getExecutableExtension()}`, 'yq', version);
 };
 
