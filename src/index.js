@@ -26,10 +26,10 @@ const getArchitecture = () => {
 
 const getArchiveExtension = () => {
   switch (os.platform()) {
-    case 'win32': return 'zip';
+    case 'win32': return '.zip';
     case 'linux':
     case 'darwin':
-      return 'tar.gz';
+      return '.tar.gz';
     default:
       core.setFailed('Unsupported Platform');
       return process.exit();
@@ -60,13 +60,13 @@ const getURL = (version) => {
   const platform = getPlatform();
   const arch = getArchitecture();
   const extension = getArchiveExtension();
-  return `https://github.com/mikefarah/yq/releases/download/v${version}/yq_${platform}_${arch}.${extension}`;
+  return `https://github.com/mikefarah/yq/releases/download/v${version}/yq_${platform}_${arch}${extension}`;
 };
 
 const extract = (archive) => {
   switch (getArchiveExtension()) {
-    case 'zip': return tc.extractZip(archive);
-    case 'tar.gz': return tc.extractTar(archive);
+    case '.zip': return tc.extractZip(archive);
+    case '.tar.gz': return tc.extractTar(archive);
     default:
       core.setFailed('Unsupported Archive Type');
       return process.exit();
