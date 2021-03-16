@@ -36,6 +36,14 @@ const getArchiveExtension = () => {
   }
 };
 
+const hasArchive = (version) => {
+  const [major, minor] = version
+    .split('.')
+    .slice(0, 2)
+    .map((s) => parseInt(s, 10));
+  return major > 4 || (major === 4 && minor >= 1);
+};
+
 const getExecutableExtension = () => {
   switch (os.platform()) {
     case 'win32': return '.exe';
