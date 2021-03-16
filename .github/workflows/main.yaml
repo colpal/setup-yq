@@ -9,6 +9,9 @@ jobs:
   main:
     strategy:
       matrix:
+        yq-version:
+          - 4.6.1
+          - 3.4.1
         os:
           - windows-latest
           - ubuntu-latest
@@ -21,6 +24,6 @@ jobs:
       - name: Run colpal/setup-yq@${{ github.ref }}
         uses: ./
         with:
-          yq-version: 4.6.1
+          yq-version: ${{ matrix.yq-version }}
 
       - run: yq --version
