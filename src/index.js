@@ -36,13 +36,15 @@ const getArchiveExtension = () => {
   }
 };
 
-const hasArchive = (version) => {
+const isLegacyRelease = (version) => {
   const [major, minor] = version
     .split('.')
     .slice(0, 2)
     .map((s) => parseInt(s, 10));
-  return major > 4 || (major === 4 && minor >= 1);
+  return major < 4 || (major === 4 && minor < 1);
 };
+
+const hasArchive = (version) => !isLegacyRelease(version);
 
 const getExecutableExtension = () => {
   switch (os.platform()) {
