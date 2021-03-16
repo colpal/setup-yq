@@ -89,8 +89,9 @@ const cache = (fn) => async (version) => {
 const getTool = cache(async (version) => {
   const url = getURL(version);
   const archive = await tc.downloadTool(url);
-  core.debug(fs.readdirSync('.'));
+  core.debug(fs.readdirSync(archive));
   const folder = await extract(archive);
+  core.debug(fs.readdirSync(folder));
   await io.mv(
     path.resolve(folder, `yq_${getPlatform()}_${getArchitecture()}${getExecutableExtension()}`),
     path.resolve(folder, 'yq'),
