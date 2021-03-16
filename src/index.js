@@ -83,9 +83,11 @@ const cache = (fn) => async (version) => {
   const cached = tc.find('yq', version);
   if (cached !== '') return cached;
   const executable = await fn(version);
+  core.debug(await fs.lstat(executable));
   const mode = await fs.lstat(executable).mode;
   const newMode = mode | 0o111; // eslint-disable-line no-bitwise
   await fs.chmod(executable, newMode);
+  core.debug(await fs.lstat(executable));
   return tc.cacheFile(executable, `yq${getExecutableExtension()}`, 'yq', version);
 };
 
