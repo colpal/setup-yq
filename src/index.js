@@ -1,5 +1,6 @@
 const os = require('os');
 const path = require('path');
+const fs = require('fs');
 const core = require('@actions/core');
 const tc = require('@actions/tool-cache');
 const io = require('@actions/io');
@@ -88,6 +89,7 @@ const cache = (fn) => async (version) => {
 const getTool = cache(async (version) => {
   const url = getURL(version);
   const archive = await tc.downloadTool(url);
+  core.debug(fs.readdirSync('.'));
   const folder = await extract(archive);
   await io.mv(
     path.resolve(folder, `yq_${getPlatform()}_${getArchitecture()}${getExecutableExtension()}`),
