@@ -82,20 +82,24 @@ const cache = (fn) => async (version) => {
   const cached = tc.find('yq', version);
   if (cached !== '') return cached;
   const executable = await fn(version);
-  core.debug(await fs.lstat(executable));
-  const { mode } = await fs.lstat(executable);
-  const newMode = mode | 0o111; // eslint-disable-line no-bitwise
-  await fs.chmod(executable, newMode);
-  core.debug(await fs.lstat(executable));
   return tc.cacheFile(executable, `yq${getExecutableExtension()}`, 'yq', version);
+};
+
+const chmod = async (file) => {
+  const { mode } = await fs.lstat(file);
+  const newMode = mode | 0o111; // eslint-disable-line no-bitwise
+  await fs.chmod(file, newMode);
+  return file;
 };
 
 const getTool = cache(async (version) => {
   const url = getURL(version);
   const download = await tc.downloadTool(url);
-  if (!hasArchive(version)) return download;
+  if (!hasArchive(version)) return chmod(download);
   const folder = await extract(download);
-  return path.resolve(folder, `yq_${getPlatform()}_${getArchitecture()}${getExecutableExtension()}`);
+  return chmod(
+    path.resolve(folder, `yq_${getPlatform()}_${getArchitecture()}${getExecutableExtension()}`),
+  );
 });
 
 (async () => {
