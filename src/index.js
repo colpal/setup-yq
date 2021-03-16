@@ -3,7 +3,6 @@ const path = require('path');
 const fs = require('fs').promises;
 const core = require('@actions/core');
 const tc = require('@actions/tool-cache');
-const io = require('@actions/io');
 
 const getPlatform = () => {
   switch (os.platform()) {
