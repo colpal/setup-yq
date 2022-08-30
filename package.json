@@ -1,5 +1,6 @@
 {
   "name": "setup-yq",
+  "version": "1.0.1",
   "scripts": {
     "build": "webpack",
     "prepare": "husky install"
