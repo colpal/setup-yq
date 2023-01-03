@@ -77,7 +77,8 @@ const getURL = (version) => {
   const arch = getArchitecture();
   const extension = hasArchive(version) ? getArchiveExtension() : getExecutableExtension();
   const prefix = getVersionPrefix(version);
-  return `https://github.com/mikefarah/yq/releases/download/${prefix}${version}/yq_${platform}_${arch}${extension}`;
+  const name = getApplicationName(version);
+  return `https://github.com/mikefarah/yq/releases/download/${prefix}${version}/${name}_${platform}_${arch}${extension}`;
 };
 
 const extract = (archive) => {
