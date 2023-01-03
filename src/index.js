@@ -36,6 +36,14 @@ const getArchiveExtension = () => {
   }
 };
 
+const isExtremelyLegacyRelease = (version) => {
+  const [major] = version
+    .split('.')
+    .slice(0, 1)
+    .map((s) => parseInt(s, 10));
+  return major === 0;
+};
+
 const isLegacyRelease = (version) => {
   const [major, minor] = version
     .split('.')
