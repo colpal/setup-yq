@@ -1,3 +1,7 @@
+# DEPRECATED
+
+Use https://mikefarah.gitbook.io/yq/usage/github-action instead
+
 # Setup yq
 
 Initialize the yq binary within your GitHub Actions runner
