@@ -44,6 +44,10 @@ const isExtremelyLegacyRelease = (version) => {
   return major === 0;
 };
 
+const getApplicationName = (version) => (isExtremelyLegacyRelease(version)
+  ? 'yaml'
+  : 'yq');
+
 const isLegacyRelease = (version) => {
   const [major, minor] = version
     .split('.')
