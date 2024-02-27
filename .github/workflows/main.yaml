@@ -9,15 +9,11 @@ jobs:
   main:
     strategy:
       matrix:
-        exclude:
-          - os: macos-latest
-            yq-version: "0.1"
         yq-version:
           - 4.30.6
           - 3.4.1
           - 2.4.1
           - 1.15.0
-          - "0.1"
         os:
           - windows-latest
           - ubuntu-latest
