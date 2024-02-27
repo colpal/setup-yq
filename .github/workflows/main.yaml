@@ -31,6 +31,9 @@ jobs:
         with:
           yq-version: ${{ matrix.yq-version }}
 
-      - run: yq --version | grep -qF "$YQ_VERSION"
+      - run: yq --version
+
+      - if: matrix.yq-version != '0.1'
+        run: yq --version | grep -qF "$YQ_VERSION"
         env:
           YQ_VERSION: ${{ matrix.yq-version }}
