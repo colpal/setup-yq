@@ -22,7 +22,6 @@ jobs:
           - windows-latest
           - ubuntu-latest
           - macos-latest
-          - self-hosted
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
