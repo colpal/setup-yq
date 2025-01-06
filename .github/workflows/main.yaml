@@ -8,6 +8,7 @@
 jobs:
   main:
     strategy:
+      fail-fast: false
       matrix:
         exclude:
           - os: macos-latest
