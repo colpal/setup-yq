@@ -107,6 +107,7 @@ const chmod = async (file) => {
 
 const getTool = cache(async (version) => {
   const url = getURL(version);
+  core.debug({ url });
   const download = await tc.downloadTool(url);
   if (!hasArchive(version)) return chmod(download);
   const folder = await extract(download);
