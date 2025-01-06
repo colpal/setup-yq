@@ -13,7 +13,7 @@ jobs:
           - os: macos-latest
             yq-version: "0.1"
         yq-version:
-          - 4.30.6
+          - 4.44.6
           - 3.4.1
           - 2.4.1
           - 1.15.0
