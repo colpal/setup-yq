@@ -18,6 +18,8 @@ jobs:
           - yq-version: "0.1"
             os: macos-15
           - yq-version: "1.15.0"
+            os: macos-13
+          - yq-version: "1.15.0"
             os: macos-14
           - yq-version: "1.15.0"
             os: macos-15
