@@ -18,6 +18,7 @@ const getPlatform = () => {
 const getArchitecture = () => {
   switch (os.arch()) {
     case 'x64': return 'amd64';
+    case 'arm64': return 'arm64';
     default:
       core.setFailed('Unsupported Architecture');
       return process.exit();
@@ -107,6 +108,7 @@ const chmod = async (file) => {
 
 const getTool = cache(async (version) => {
   const url = getURL(version);
+  core.debug({ url });
   const download = await tc.downloadTool(url);
   if (!hasArchive(version)) return chmod(download);
   const folder = await extract(download);
