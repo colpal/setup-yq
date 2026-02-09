@@ -12,13 +12,9 @@ jobs:
       matrix:
         exclude:
           - yq-version: "0.1"
-            os: macos-13
-          - yq-version: "0.1"
             os: macos-14
           - yq-version: "0.1"
             os: macos-15
-          - yq-version: "1.15.0"
-            os: macos-13
           - yq-version: "1.15.0"
             os: macos-14
           - yq-version: "1.15.0"
@@ -43,7 +39,6 @@ jobs:
           - windows-2025
           - windows-2022
           - windows-2019
-          - macos-13
           - macos-14
           - macos-15
     runs-on: ${{ matrix.os }}
