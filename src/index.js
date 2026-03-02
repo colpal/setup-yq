@@ -1,8 +1,8 @@
-const os = require('os');
-const path = require('path');
-const fs = require('fs').promises;
-const core = require('@actions/core');
-const tc = require('@actions/tool-cache');
+import * as os from 'node:os';
+import * as path from 'node:path';
+import * as fs from 'node:fs/promises';
+import * as core from '@actions/core';
+import * as tc from '@actions/tool-cache';
 
 const getPlatform = () => {
   switch (os.platform()) {
