@@ -2,18 +2,17 @@
   "name": "setup-yq",
   "version": "1.1.1",
   "scripts": {
-    "build": "webpack"
+    "build": "esbuild src/index.js --bundle --outfile=dist/main.js --platform=node --target=node20 --minify"
   },
   "dependencies": {
     "@actions/core": "^3.0.0",
     "@actions/tool-cache": "^4.0.0"
   },
   "devDependencies": {
+    "esbuild": "0.27.3",
     "eslint": "^7.21.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.22.1",
-    "webpack": "^5.104.1",
-    "webpack-cli": "^6.0.1"
+    "eslint-plugin-import": "^2.22.1"
   },
   "volta": {
     "node": "20.18.3"
