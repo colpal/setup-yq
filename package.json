@@ -5,7 +5,7 @@
     "build": "webpack"
   },
   "dependencies": {
-    "@actions/core": "^1.11.1",
+    "@actions/core": "^3.0.0",
     "@actions/tool-cache": "^4.0.0"
   },
   "devDependencies": {
