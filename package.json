@@ -2,7 +2,7 @@
   "name": "setup-yq",
   "version": "1.1.1",
   "scripts": {
-    "build": "esbuild src/index.js --bundle --outfile=dist/main.js --platform=node --target=node20"
+    "build": "esbuild src/index.js --bundle --outfile=dist/main.js --platform=node --target=node20 --minify"
   },
   "dependencies": {
     "@actions/core": "^3.0.0",
