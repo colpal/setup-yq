@@ -3,7 +3,7 @@
   push:
     paths:
       - .github/workflows/main.yaml
-      - dist/main.js
+      - dist/index.js
 
 jobs:
   main:
