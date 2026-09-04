@@ -8,5 +8,6 @@ Initialize the yq binary within your GitHub Actions runner
 - uses: colpal/setup-yq@v2
   with:
     # The version of the yq binary to install
-    yq-version: 4.6.1
+    # https://github.com/mikefarah/yq/releases
+    yq-version: 4.53.6
 ```
