@@ -1,4 +1,8 @@
 on:
+  pull_request:
+    paths:
+      - .github/workflows/main.yaml
+      - dist/index.js
   push:
     paths:
       - .github/workflows/main.yaml
