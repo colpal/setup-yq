@@ -37,6 +37,7 @@ jobs:
           - yq-version: "3.4.1"
             os: macos-26
         yq-version:
+          - 4.53.6
           - 4.44.6
           - 3.4.1
           - 2.4.1
