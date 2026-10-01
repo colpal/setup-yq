@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.12",
-    "@types/node": "^24",
+    "@types/node": "^26",
     "terser": "^5.51.2",
     "typescript": "^7.0.2",
     "vite": "^8.2.2"
